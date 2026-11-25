@@ -1,0 +1,26 @@
+# Private configuration
+.env
+.env.*
+
+# Local Python installations and generated files
+.venv/
+venv/
+vendor/
+__pycache__/
+*.py[cod]
+cache/
+legacy/
+permission-recovery/
+*.log
+*.pdf
+*.lnk
+*.zip
+dist/
+build/
+*.egg-info/
+
+# Editor and OS state
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
