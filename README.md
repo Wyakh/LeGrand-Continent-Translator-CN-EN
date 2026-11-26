@@ -15,8 +15,8 @@ Turn a text-based French article PDF into reflowed Chinese and English PDFs usin
    ```
 
    Replace all three example values with your provider's settings. Use its OpenAI-compatible **base URL**, not a full `/chat/completions` endpoint. The example URL is deliberately nonfunctional. **Keep an existing working `.env` unchanged.** Process environment variables with these names override the local settings.
-4. Double-click `_run news translation.bat`, or drag one French PDF onto it. If prompted, paste the full PDF path; quotes and spaces are accepted. The launcher creates `.venv` and installs **PyMuPDF 1.26.7** from `requirements.txt` automatically. Initial setup needs internet access; Python itself is not installed by the launcher.
-5. Choose **K to keep the original and intermediate files**. **Pressing Enter instead permits permanent deletion of the original PDF and its article cache after both output PDFs validate.** Keep a backup; PDF validation does not establish translation accuracy.
+4. Double-click `_run news translation.bat`. At the path prompt, select one or more French PDFs in Explorer, **drag them into the console, then press Enter**. You can also drop several PDFs directly onto the batch file. Quoted paths and spaces are accepted. The launcher creates `.venv` and installs **PyMuPDF 1.26.7** from `requirements.txt` automatically. Initial setup needs internet access; Python itself is not installed by the launcher.
+5. Choose **K to keep the originals and intermediate files**; this choice applies to the whole batch. PDFs are translated **one by one**, in the supplied order; duplicate selections are processed only once. **Pressing Enter instead permits permanent deletion of each original PDF and its article cache after that file's two output PDFs validate.** Keep a backup; PDF validation does not establish translation accuracy. If a translation fails, the launcher continues to the next PDF and lists failures at the end. Drop files at the path prompt, not while a translation is already running.
 
 Both output PDFs are saved **beside the input PDF**, using translated titles as filenames. Existing output names are not overwritten. An outside Windows shortcut may point to the batch launcher, but must be recreated or retargeted after moving the project.
 
@@ -51,7 +51,7 @@ For manual setup, use `py -3 -m venv .venv`, then `.\.venv\Scripts\python.exe -m
 
 ## Moving, privacy, and limitations
 
-- The tracked source is the same locally and on GitHub. `.env`, `.venv`, caches, PDFs, shortcuts, and bytecode are local-only and ignored by Git. Never upload the entire working folder or force-add private files.
+- Git tracks source files only. `.env`, `.venv`, caches, PDFs, shortcuts, and bytecode are local-only and ignored by Git. Never upload the entire working folder or force-add private files.
 - Do not copy `.venv` to another PC. After moving or downloading the project, recreate its environment locally using the launcher. The project requires a working Python installation, filesystem permissions, and network access; universal compatibility is not guaranteed.
 - Translation sends **article text and the source filename** to your selected provider and may incur API charges, including retries. Review that provider's privacy/retention policies and obtain permission before submitting material. Never commit API keys or private configuration.
 - Input must be a text-based French PDF; OCR, encrypted PDFs and empty documents are unsupported. Output is reflowed, not an exact reproduction of source page geometry. Complex columns, footnotes and commentary/image detection need manual review.
